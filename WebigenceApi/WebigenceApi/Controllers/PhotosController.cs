@@ -7,18 +7,19 @@ using System.Web.Http;
 
 namespace WebigenceApi.Controllers
 {
-    public class AlbumsController : ApiController
+    public class PhotosController : ApiController
     {
-        // GET: api/Albums ** Returns whole album responses
+        // GET: api/Photos ** Returns whole photos responses
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Albums/5 ** Returns specfic album based on ID given
+        // GET: api/Photos/5 ** Returns specfic photo based on ID given
         public string Get(int id)
         {
             return "value";
         }
+
     }
 }
