@@ -4,21 +4,29 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebigenceApi.Models;
+using WebigenceApi.Service;
 
 namespace WebigenceApi.Controllers
 {
     public class PhotosController : ApiController
     {
-        // GET: api/Photos ** Returns whole photos responses
-        public IEnumerable<string> Get()
+        private PhotoGet photoService;
+        public PhotosController()
         {
-            return new string[] { "value1", "value2" };
+            photoService = new PhotoGet();
         }
 
-        // GET: api/Photos/5 ** Returns specfic photo based on ID given
-        public string Get(int id)
+        // GET: Photos ** Returns whole photos responses
+        public List<Photo> Get()
         {
-            return "value";
+            return (photoService.getModels());
+        }
+
+        // GET: Photos/"id" ** Returns specfic photo based on ID given
+        public List<Photo> Get(int id)
+        {
+            return photoService.getModels().Where(obj => obj.albumId == id).ToList();
         }
 
     }
